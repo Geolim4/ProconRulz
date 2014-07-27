@@ -1,0 +1,18 @@
+# Flagrun Mode by Geolim4
+# Information Shouts
+On Spawn;PlayerFirst;PlayerYell %p%, don't kill/teamkill!;PlayerSay %p%, type !rules in chat for more info!
+On Say;Text !rules,!weapons;PlayerSay ::: NO KILL, NO TEAMKILL;PlayerSay ::: BAD BOYS WILL SLAPPED BY GeoChainSaw and fapped by 4n4k160;
+
+# Player Total Kicks and Bans check
+On Join;If %ini_kickban_tbans[%p%]% == 3;TempBan 2592000 %p%, you've been temp. banned 3 times. Ban for 1 month.;Set %ini_kickban_tbans[%p%]% 0
+On Join;If %ini_kickban_kicks[%p%]% == 2;TempBan 86400 %p%, you've been kicked 1 times. Ban for 24 hours.;Set %ini_kickban_kicks[%p%]% 0
+
+# Weapons check kills
+#On Kill;PlayerCount 1;Log ^1%p% ^0has been fucked for using a ^1%w%;Incr %ini_kickban_tbans[%p%]%;Say %p% has been fucked (1h) for using a %w%;TempBan 3600 %p% (1h) No kill asshole! You used a %w%, i fucked your mom!.
+On Spawn;If %kills% >= 2;Log ^1%p% ^0has been auto-killed for too much kills;Incr %ini_kickban_tbans[%p%]%;Yell 6 HAHA !! %p% has been auto-killed for too much kills, what a douchebag :);Kill
+On Kill;PlayerCount 1;Incr %kills%;Log ^1%p% ^0has been pwnd for using a ^1%w%;Incr %ini_kickban_kicks[%p%]%;Say %p% has been pwnd for using a %w% ;Kill
+On Kill;PlayerCount 0;Incr %kills%;Log ^1%p% ^0has been pwnd for using a ^1%w%;Incr %ini_kickban_kicks[%p%]%;Say %p% has been pwnd for using a %w% ;Kill
+#On Kill;PlayerCount 0;Log ^1%p% ^0has been pwnd for using a ^1%w%;Incr %ini_kickban_kicks[%p%]%;Say %p% has been pwnd for using a %w% ;Kick %p% no kill idiot! You used a %w% stupid autistic.
+#On TeamKill;PlayerCount 2;Log ^1%p% ^0has been fucked for teamkilling using a ^1%w%;Incr %ini_kickban_tbans[%p%]%;Say %p% has been fucked (1h) for using a %w%;TempBan 3600 %p% (1h) No teamkill asshole! You used a %w% on a teammate, i fucked your mom!.
+#On TeamKill;PlayerCount 1;Log ^1%p% ^0has been pwnd for teamkilling using a ^1%w%;Incr %ini_kickban_kicks[%p%]%;Say %p% has been pwnd for using a %w% ;Kick %p% no teamkill idiot! You used on a %w% on teammate stupid autistic.
+#On TeamKill;PlayerCount 0;Say %p% has been killed for teamkilling using a %w% ;Kill
